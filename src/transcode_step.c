@@ -24,7 +24,7 @@ int transcode_step() {
 		ist = input_streams[ost->source_index]; // ****<<  选择输入流(即是指定的输出流)
 	}
 
-	ret = process_input(ist->file_index); // see process_input.c
+	ret = process_input(ist->file_index); // ****<<  see process_input.c
 	if (ret == AVERROR(EAGAIN)) {
 		if (input_files[ist->file_index]->eagain)
 			ost->unavailable = 1;
@@ -33,5 +33,5 @@ int transcode_step() {
 	if (ret < 0)
 		return ret == AVERROR_EOF ? 0 : ret;
 
-	return reap_filters(); // see reap_filters.c
+	return reap_filters(); // ****<<  see reap_filters.c
 }
